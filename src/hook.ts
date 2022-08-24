@@ -16,12 +16,12 @@ export class LanyardError extends Error {
 
 export type Options = Omit<SWRConfiguration<Data, LanyardError>, 'fetcher'>;
 
-export function useLanyard(snowflake: string, options?: Options) {
+export function useLanyard(snowflake: string, instance, options?: Options) {
 	return useSWR<Data, LanyardError>(
 		`lanyard:${snowflake}`,
 		async () => {
 			const request = new Request(
-				`https://api.lanyard.rest/v1/users/${snowflake}`,
+				`https://${instance ?? 'api.lanyard.rest'}/v1/users/${snowflake}`,
 			);
 
 			const response = await fetch(request);
