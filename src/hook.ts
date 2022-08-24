@@ -16,7 +16,7 @@ export class LanyardError extends Error {
 
 export type Options = Omit<SWRConfiguration<Data, LanyardError>, 'fetcher'>;
 
-export function useLanyard(snowflake: string, instance, options?: Options) {
+export function useLanyard(snowflake: string, instance: string, options?: Options) {
 	return useSWR<Data, LanyardError>(
 		`lanyard:${snowflake}`,
 		async () => {
