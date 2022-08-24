@@ -23,7 +23,7 @@ interface SocketMessage {
 	d?: SocketData;
 }
 
-export function useLanyardWs(snowflake: string | string[], instance: string) {
+export function useLanyardWs(snowflake: string | string[], instance?: string) {
 	const [presence, setPresence] = useState<Data>();
 
 	useEffect(() => {
