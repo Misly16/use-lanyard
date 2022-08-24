@@ -23,7 +23,7 @@ interface SocketMessage {
 	d?: SocketData;
 }
 
-export function useLanyardWs(snowflake: string | string[]) {
+export function useLanyardWs(snowflake: string | string[], instance: string) {
 	const [presence, setPresence] = useState<Data>();
 
 	useEffect(() => {
@@ -47,7 +47,7 @@ export function useLanyardWs(snowflake: string | string[]) {
 				clearInterval(heartbeat);
 			}
 
-			socket = new WebSocket('wss://api.lanyard.rest/socket');
+			socket = new WebSocket(`wss://${instance ?? api.lanyard.rest}/socket`);
 
 			socket.addEventListener('open', () => {
 				console.log('Lanyard: Socket connection opened');
