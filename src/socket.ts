@@ -47,7 +47,7 @@ export function useLanyardWs(snowflake: string | string[], instance: string) {
 				clearInterval(heartbeat);
 			}
 
-			socket = new WebSocket(`wss://${instance ?? api.lanyard.rest}/socket`);
+			socket = new WebSocket(`wss://${instance ?? 'api.lanyard.rest'}/socket`);
 
 			socket.addEventListener('open', () => {
 				console.log('Lanyard: Socket connection opened');
